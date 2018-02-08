@@ -1,0 +1,8 @@
+{
+  "name": "simpleWeather",
+  "app_id": "9e2f0e1b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
