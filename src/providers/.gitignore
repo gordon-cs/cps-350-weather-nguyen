@@ -1,0 +1,7 @@
+# private Api key for Dark Spy Api
+# Got this idea from Dr. Tuck's demo code
+
+export function darkSkyApiKey() : string {
+    return "c7a0bbc2b027787365af6e16179330a4";
+};
+dark-ski-api-key.ts 

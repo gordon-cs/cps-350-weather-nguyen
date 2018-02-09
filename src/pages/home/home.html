@@ -4,6 +4,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding align = center>
-  <h2>Wenham</h2>
-</ion-content>
+
+  <ion-content padding align = center>
+
+      <h2>Wenham</h2>
+      <h1><div *ngIf="temporaryWeather | async as value">
+          {{value}}&deg;F
+      </div></h1>
+    
+  </ion-content>
+
+
+
+<ion-footer align = center>
+  <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+</ion-footer>
