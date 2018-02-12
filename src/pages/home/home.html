@@ -1,27 +1,24 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title align = center>Simple Weather</ion-title>
+  <ion-navbar color = "primary">
+    <ion-title align = center>Today</ion-title>
   </ion-navbar>
 </ion-header>
 
 
   <ion-content padding align = center>
+    <ion-row>
+      <ion-col col-12>
+        <div class = "location">Wenham</div>
+      </ion-col>
+      <ion-col col-12>
+        <div class = "temperature">{{ getWenham | async }} </div>
+      </ion-col>
+    </ion-row>
 
-          <h1> Wenham </h1>
 
-          
-      
-          <ion-row> </ion-row>
-      
-      ______________DIVIDE_______________
-        
-        
-        <h1> {{ data }}</h1>
+
       
   </ion-content>
 
 
 
-<ion-footer align = center>
-  <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-</ion-footer>

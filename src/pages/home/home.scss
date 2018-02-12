@@ -1,3 +1,16 @@
 page-home {
+    .location {
+        font-size: x-large;
+        padding-top: 5em;
+    }
 
+    .temperature {
+        font-size: 60px;
+        padding-top: 1em;
+    }
+
+    .footer-bar {
+        position: absolute;
+        text-align: center;
+    }
 }
