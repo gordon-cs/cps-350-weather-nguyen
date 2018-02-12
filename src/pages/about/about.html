@@ -6,6 +6,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding align = center>
 
-</ion-content>
+    <ion-row>
+      <ion-col col-12>
+        <div class = "location">Wenham</div>
+      </ion-col>
+      <ion-col col-12>
+        <div class = "forecast">{{ getWenham | async }} </div>
+      </ion-col>
+    </ion-row>
+ 
+  </ion-content>

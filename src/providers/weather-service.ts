@@ -5,12 +5,14 @@ import { Observable } from 'rxjs/Observable';
 
 // //Subjects implement both the Observer and the Observable interfaces, 
 // //meaning that we can use them to both emit values and register subscribers.
-//import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 
 // //return upon subscription the last value of the stream, 
 // //or an initial state if no value was emitted yet
 // // - THIS IS COOL - can retrieve current value of stream at any time.
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { Temperature } from '../models/temperature.model';
 
 
 
@@ -24,33 +26,27 @@ export class WeatherService {
 
     private defaultMessage = "LOADING";
 
-    private _currentBehavior = new BehaviorSubject(this.defaultMessage);
-    private _currentTemperature = this._currentBehavior.asObservable();
-
-    // private _currentTimezoneBehavior : BehaviorSubject<string>;
-    // private _currentTimezone : Observable<string>;
+    private _currentTemperatureSubject: Subject<any>;
+    private _currentTemperature: Observable<Temperature>;
 
     constructor(public http: HttpClient) { 
         console.log('Hello Weather Service');
 
         this.realUrl = this.apiUrl + this.apiKey + "/" + this.wenhamLocation;
 
-        // //to tell the user that page is currently loading
-        // this._currentBehavior = new BehaviorSubject("LOADING");
+        this._currentTemperatureSubject = new Subject<Temperature>();
+        this._currentTemperature = this._currentTemperatureSubject.asObservable();
 
-        // this._currentTemperature = this._currentBehavior.asObservable(); //got this from demo code
-
-        this.http.jsonp(this.realUrl, 'callback').
-                    // => defines 3 functions for subcribe
-                    subscribe((data : any) => { 
-                                        this._currentBehavior.next(data.currently.temperature); 
-                                      },
-                      err => { console.log("JSONP Error ");
-                               console.log(err)
-                             },
-                      ()  => { console.log("Done");
-                             }
-                         );
+        this.http.jsonp(this.realUrl, 'callback').subscribe(data => { 
+                                    this._currentTemperatureSubject.next(data);
+                                    console.log(data);
+                                    console.log(this._currentTemperature);
+                                },
+                        err => { console.log("Error:");
+                                console.log(err) },
+                        ()  => { console.log("Finished");
+                                }
+                        );
 
 
     }
@@ -60,19 +56,8 @@ export class WeatherService {
         console.log("I actually do something useful");
     }
 
-    // GET wenham temperature
-    // getWenham() : Observable<string> {
-    //     console.log("current temperature in Wenham ");
-    //     console.log(this._currentTemperature);
-    //     return this._currentTemperature;
-        
-    // }
-
-    getTemperature(): Observable<string> {
+    getDefaultTemperature(): Observable<Temperature> {
         return this._currentTemperature;
-    }
+      }
 
-    getForecast() {
-        return this.http.jsonp(this.defaultMessage, 'callback');
-    }
 }

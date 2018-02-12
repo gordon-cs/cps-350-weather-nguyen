@@ -11,8 +11,22 @@
         <div class = "location">Wenham</div>
       </ion-col>
       <ion-col col-12>
-        <div class = "temperature">{{ getWenham | async }} </div>
+          <div icon="cloud">
+            
+          </div>
+        </ion-col>
+      <ion-col col-12>
+        <div class = "temperature">
+          {{ this.currentTemp }}&deg;F 
+          {{ this.timeZone }}
+        </div>
+
+      
+
       </ion-col>
+      <ion-col col-12>
+          <!-- <div class = "summary">{{ getSummary | async }} </div> -->
+        </ion-col>
     </ion-row>
 
 
