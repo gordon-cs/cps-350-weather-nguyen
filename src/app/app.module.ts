@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { SimpleWeather } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+
+import { ActivitiesPage } from '../pages/activities/activities';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -17,7 +18,7 @@ import { WeatherService } from '../providers/weather-service';
 @NgModule({
   declarations: [
     SimpleWeather,
-    AboutPage,
+    ActivitiesPage,
     ContactPage,
     HomePage,
     TabsPage
@@ -30,7 +31,7 @@ import { WeatherService } from '../providers/weather-service';
   bootstrap: [IonicApp],
   entryComponents: [
     SimpleWeather,
-    AboutPage,
+    ActivitiesPage,
     ContactPage,
     HomePage,
     TabsPage

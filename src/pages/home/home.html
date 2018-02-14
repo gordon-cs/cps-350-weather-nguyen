@@ -10,23 +10,36 @@
       <ion-col col-12>
         <div class = "location">Wenham</div>
       </ion-col>
-      <ion-col col-12>
-          <div icon="cloud">
-            
-          </div>
-        </ion-col>
+
       <ion-col col-12>
         <div class = "temperature">
-          {{ this.currentTemp }}&deg;F 
-          {{ this.timeZone }}
+          {{ this.currentTemp }}&deg;
         </div>
-
-      
-
       </ion-col>
+
       <ion-col col-12>
-          <!-- <div class = "summary">{{ getSummary | async }} </div> -->
-        </ion-col>
+        <div>
+          {{ this.summary }}
+        </div>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row class = "hourly">
+      <ion-col>
+        {{ this.hour0 }}&deg;
+      </ion-col>
+      <ion-col>
+        {{ this.hour1 }}&deg;
+      </ion-col>
+      <ion-col>
+        {{ this.hour2 }}&deg;
+      </ion-col>
+      <ion-col>
+        {{ this.hour3 }}&deg;
+      </ion-col>
+      <ion-col>
+        {{ this.hour4 }}&deg;
+      </ion-col>
     </ion-row>
 
 

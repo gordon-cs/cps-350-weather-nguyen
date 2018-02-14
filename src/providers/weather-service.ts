@@ -47,8 +47,6 @@ export class WeatherService {
                         ()  => { console.log("Finished");
                                 }
                         );
-
-
     }
 
     //testing
