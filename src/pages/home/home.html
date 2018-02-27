@@ -13,7 +13,7 @@
 
       <ion-col col-12>
         <div>
-          {{ this.summary }}
+          {{ this.currentSum }}
         </div>
       </ion-col>
 
@@ -29,26 +29,6 @@
     <ion-content>
       <button ion-button (click)="openForecast()" > Next 7 Days Forecast</button>
     </ion-content>
-    
-    <ion-row class = "hourly">
-      <ion-col>
-        {{ this.hour0 }}&deg;
-      </ion-col>
-      <ion-col>
-        {{ this.hour1 }}&deg;
-      </ion-col>
-      <ion-col>
-        {{ this.hour2 }}&deg;
-      </ion-col>
-      <ion-col>
-        {{ this.hour3 }}&deg;
-      </ion-col>
-      <ion-col>
-        {{ this.hour4 }}&deg;
-      </ion-col>
-    </ion-row>
-
-
 
       
   </ion-content>

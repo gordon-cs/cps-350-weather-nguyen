@@ -24,38 +24,30 @@ export class WeatherService {
     private wenhamLocation : string = '42.589611,-70.819806';
     private realUrl : string;
 
-    private defaultMessage = "LOADING";
+    
 
-    private _currentTemperatureSubject: Subject<any>;
-    private _currentTemperature: Observable<Temperature>;
+    private currentTemperatureSubject: Subject<any>;
+    private currentTemperature: Observable<Temperature>;
 
-    constructor(public http: HttpClient) { 
-        console.log('Hello Weather Service');
-
-        this.realUrl = this.apiUrl + this.apiKey + "/" + this.wenhamLocation;
-
-        this._currentTemperatureSubject = new Subject<Temperature>();
-        this._currentTemperature = this._currentTemperatureSubject.asObservable();
-
-        this.http.jsonp(this.realUrl, 'callback').subscribe(data => { 
-                                    this._currentTemperatureSubject.next(data);
-                                    console.log(data);
-                                    console.log(this._currentTemperature);
-                                },
-                        err => { console.log("Error:");
-                                console.log(err) },
-                        ()  => { console.log("Finished");
-                                }
-                        );
+    constructor(private http: HttpClient) { 
+        
     }
+
 
     //testing
     randomFunction() {
         console.log("I actually do something useful");
     }
 
-    getDefaultTemperature(): Observable<Temperature> {
-        return this._currentTemperature;
-      }
+    getDefaultTemperature() {
+
+        this.currentTemperatureSubject = new BehaviorSubject("??");
+        this.currentTemperature = this.currentTemperatureSubject.asObservable();
+        let realUrl = this.apiUrl + this.apiKey + "/" + this.wenhamLocation;
+        this.http.jsonp(realUrl,'callback').subscribe( data => this.currentTemperatureSubject.next(data));
+        return this.currentTemperature;        
+    }
+
+
 
 }

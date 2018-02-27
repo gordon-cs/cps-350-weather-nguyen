@@ -12,38 +12,24 @@ import { ForecastPage } from '../forecast/forecast';
 export class HomePage {
 
   
+  temperature: Observable<Temperature>;
   private currentTemp: string;
-  private timeZone: string;
-  private summary: string;
-
-  //hourly
-  private hour0: string;
-  private hour1: string;
-  private hour2: string;
-  private hour3: string;
-  private hour4: string;
+  private currentSum: string;
 
   constructor(public navCtrl: NavController, public weather: WeatherService) {
-    //this.temporaryWeather = weather.getWenham();
-    
-    //this.weather.getTimeZone().subscribe(Response => console.log(Response));
-    console.log('hello');
+    this.getTemperature();
+  }
 
-    weather.getDefaultTemperature().subscribe( (data : any) => {
-      this.currentTemp = data.currently.temperature;
-      this.timeZone = data.timezone;
-      this.summary = data.currently.summary;
+  getTemperature() {
+    this.temperature = this.weather.getDefaultTemperature();
+    this.temperature.subscribe( (data: any) => { 
+      if (data.currently != undefined )
+      {
+        this.currentTemp = data.currently.temperature;
+        this.currentSum = data.currently.summary;
 
-      //hourly
-      this.hour0 = data.hourly.data[0].temperature;
-      this.hour1 = data.hourly.data[1].temperature;
-      this.hour2 = data.hourly.data[2].temperature;
-      this.hour3 = data.hourly.data[3].temperature;
-      this.hour4 = data.hourly.data[4].temperature;
-      
-    });
-
-    
+      } 
+    })
   }
 
   openForecast() {
