@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color = "primary">
-    <ion-title align = center>Today</ion-title>
+    <ion-title align = center>{{this.today.getWeekday()}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,22 +14,36 @@
 
       <ion-col col-12>
         <div>
-          {{ this.currentSum }}
+          {{ this.today.getSummary() }}
         </div>
       </ion-col>
 
       <ion-col col-12>
         <div class = "temperature">
-          {{ this.currentTemp }}&deg;F
+            {{this.today.getTempHigh()}}&deg;F
         </div>
       </ion-col>
 
+      <ion-col col-12>
+          <div>
+            Humidity: {{ this.today.getHumidity() }}%
+            
+          </div>
+        </ion-col>
+
+        <ion-col col-12>
+            <div>
+              Windspeed: {{ this.today.getWindSpeed() }}
+            </div>
+          </ion-col>
 
     </ion-row>
 
     <ion-content>
       <button ion-button (click)="openForecast()" > Next 7 Days Forecast</button>
     </ion-content>
+
+    
 
       </div>
   </ion-content>

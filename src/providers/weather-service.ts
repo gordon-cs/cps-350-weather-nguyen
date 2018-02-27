@@ -48,6 +48,32 @@ export class WeatherService {
         return this.currentTemperature;        
     }
 
+    //separate days. needed so we know which day it is
+    //function was first written by Max
+    //takes in day as argument
+    //needed for icon as well
+    divideDay(day){
+        switch(day % 7)
+        {
+            case 0: return "Sunday"
+            case 1: return "Monday"
+            case 2: return "Tuesday"
+            case 3: return "Wednesday"
+            case 4: return "Thursday"
+            case 5: return "Friday"
+            case 6: return "Saturday"
+        }
+    }
+    
+    changeIconName(week)
+    {
+        week.forEach(day => {
+            if(day.icon == "rain"|| "wind" ||"snow" ||"sleet" ||"fog" || "cloudy")
+            {
+              day.icon = "weather-" + day.icon;   
+            }
+           });
+    }
 
 
 }
