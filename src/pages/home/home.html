@@ -12,17 +12,23 @@
       </ion-col>
 
       <ion-col col-12>
-        <div class = "temperature">
-          {{ this.currentTemp }}&deg;
-        </div>
-      </ion-col>
-
-      <ion-col col-12>
         <div>
           {{ this.summary }}
         </div>
       </ion-col>
+
+      <ion-col col-12>
+        <div class = "temperature">
+          {{ this.currentTemp }}&deg;F
+        </div>
+      </ion-col>
+
+
     </ion-row>
+
+    <ion-content>
+      <button ion-button (click)="openForecast()" > Next 7 Days Forecast</button>
+    </ion-content>
     
     <ion-row class = "hourly">
       <ion-col>

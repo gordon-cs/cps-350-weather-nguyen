@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import { WeatherService } from '../../providers/weather-service';
 import { Observable } from 'rxjs/Observable';
 import { Temperature } from '../../models/temperature.model'; 
-import { ForecastPage } from '../forecast/forecast';
+
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-forecast',
+  templateUrl: 'forecast.html',
 })
-export class HomePage {
+export class ForecastPage {
 
-  
   private currentTemp: string;
   private timeZone: string;
   private summary: string;
@@ -24,13 +23,12 @@ export class HomePage {
   private hour4: string;
 
   constructor(public navCtrl: NavController, public weather: WeatherService) {
-    //this.temporaryWeather = weather.getWenham();
     
-    //this.weather.getTimeZone().subscribe(Response => console.log(Response));
-    console.log('hello');
+    console.log('forecast PAGE IS ACTUALLY RUNNING');
 
     weather.getDefaultTemperature().subscribe( (data : any) => {
       this.currentTemp = data.currently.temperature;
+      console.log(this.currentTemp);
       this.timeZone = data.timezone;
       this.summary = data.currently.summary;
 
@@ -41,13 +39,9 @@ export class HomePage {
       this.hour3 = data.hourly.data[3].temperature;
       this.hour4 = data.hourly.data[4].temperature;
       
-    });
+  });
 
-    
-  }
+}
 
-  openForecast() {
-    this.navCtrl.push(ForecastPage);
-  }
 
 }
