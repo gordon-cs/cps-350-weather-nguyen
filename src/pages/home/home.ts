@@ -18,8 +18,6 @@ export class HomePage {
   //declare today as interface
   today:dayforecast = new dayforecast();
 
-  //date variable
-  dateVariable: string;
 
   constructor(public navCtrl: NavController, public weather: WeatherService) {
 
@@ -28,7 +26,6 @@ export class HomePage {
     this.today.setWeekday(this.weather.divideDay(new Date().getDay()));
     this.getTemperature();
 
-    this.dateVariable = new Date().toISOString();
   }
 
   
@@ -57,5 +54,4 @@ export class HomePage {
   openForecast() {
     this.navCtrl.push(ForecastPage);
   }
-
 }

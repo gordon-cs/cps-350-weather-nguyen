@@ -10,7 +10,7 @@
           <ion-item *ngFor = "let weekday of sevenDays;index as i" >
 
               <ion-thumbnail item-left>
-                ICON
+                  <ion-icon [name] = "weekday.icon"></ion-icon>
               </ion-thumbnail>
                   {{weekday.weekday}}
                           

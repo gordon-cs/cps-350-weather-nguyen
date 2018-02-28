@@ -71,7 +71,10 @@ getTemperature() {
         day.setTempHigh( Math.round(this.dailyTemp.data[i]["temperatureHigh"]) );
         day.setTempLow( Math.round(this.dailyTemp.data[i]["temperatureLow"]) );
         day.setSummary(this.dailyTemp.data[i]["summary"]);
-      })
+        day.setIcon(this.dailyTemp.data[i]["icon"]);
+        i++
+      });
+      this.weather.changeIconName(this.sevenDays);
     } 
   })
 }

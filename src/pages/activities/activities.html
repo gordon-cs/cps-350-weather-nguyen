@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar color ="primary" >
       <ion-title align = center>
-        Recommended Activities
+          {{this.today.getWeekday()}}
       </ion-title>
     </ion-navbar>
   </ion-header>
@@ -9,13 +9,21 @@
   <ion-content padding align = center>
       <div class="main-content" (swipe)="swipe($event)">
   
-      <ion-row>
-        <ion-col col-12>
-          <div class = "location">Wenham</div>
-        </ion-col>
-        <ion-col col-12>
-          <div class = "forecast">{{ getWenham | async }} </div>
-        </ion-col>
-      </ion-row>
+          <ion-col col-12>
+                It is {{ this.today.getSummary() }} today             
+          </ion-col>
+          <ion-col col-12>
+              <div>
+                  <ion-icon [name]="today.getIcon()"></ion-icon>
+              </div>
+            </ion-col>
+            <ion-col col-12>
+                <div>
+                    Here are the recommended activities:
+                </div>
+                    <p>Jogging</p>
+                    <p>Indoor Basketball</p>
+                    <p>Weight Lifting</p>
+            </ion-col>
    </div>
     </ion-content>
