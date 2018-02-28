@@ -1,13 +1,28 @@
 <ion-header>
   <ion-navbar color = "primary">
-    <ion-title>Next 7 Days Forecast</ion-title>
+    <ion-title>Seven Days Forecast</ion-title>
   </ion-navbar>
 </ion-header>
 
   <ion-content>
-    
-    HELLO
-    {{ this.currentTemp}}
+
+      <ion-list>
+          <ion-item *ngFor = "let weekday of sevenDays;index as i" >
+
+              <ion-thumbnail item-left>
+                ICON
+              </ion-thumbnail>
+                  {{weekday.weekday}}
+                          
+                    <p>H:{{weekday.tempHigh}}&deg;F</p>
+                    <p>L:{{weekday.tempLow}}&deg;F</p>
+                  
+
+                  <p>{{weekday.summary}}</p>
+               
+
+          </ion-item>
+        </ion-list>
       
   </ion-content>
 
