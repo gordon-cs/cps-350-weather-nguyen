@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController} from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import { WeatherService } from '../../providers/weather-service';
 import { Observable } from 'rxjs/Observable';
 import { Temperature, Daily } from '../../models/temperature.model';
@@ -27,12 +27,14 @@ export class ForecastPage {
                          new dayforecast()];
       this.getWeek();
       this.sevenDays[0].setWeekday("Today");
+      //once data is pulled. needs to load it
       this.loadWeek();
   }
 
 //converting numbers in API to date format
 //Max wrote this function as well as loadWeek function
-//Link i researched: https://ionicframework.com/docs/api/components/loading/LoadingController/
+//Link i researched to understand it: 
+//https://ionicframework.com/docs/api/components/loading/LoadingController/
 
 getWeek() {
   let todayNum = new Date().getDay();
@@ -66,8 +68,8 @@ getTemperature() {
       let i = 0;
 
       this.sevenDays.forEach(day => {
-        day.setTempHigh(this.dailyTemp.data[i]["temperatureHigh"]);
-        day.setTempLow(this.dailyTemp.data[i]["temperatureLow"]);
+        day.setTempHigh( Math.round(this.dailyTemp.data[i]["temperatureHigh"]) );
+        day.setTempLow( Math.round(this.dailyTemp.data[i]["temperatureLow"]) );
         day.setSummary(this.dailyTemp.data[i]["summary"]);
       })
     } 

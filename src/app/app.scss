@@ -17,3 +17,74 @@
 .main-content {
     height: 100%;
   }
+
+//got this site from Max:
+//https://golb.hplar.ch/2018/01/Custom-SVG-icons-in-Ionic.html
+//Deals with custom SVG icon files
+
+//custom icons are from weather-icon-master at http://weathericons.io
+ion-icon {
+  &[class*="custom-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 70px;
+    height: 70px;
+  }
+
+  &[class*="custom-rain"] {
+    mask-image: url(../assets/svg/wi-rain.svg);
+  }
+  &[class*="custom-wind"] {
+    mask-image: url(../assets/svg/wi-windy.svg);
+  }
+  &[class*="custom-snow"] {
+    mask-image: url(../assets/svg/wi-snow.svg);
+  }
+  &[class*="custom-sleet"] {
+    mask-image: url(../assets/svg/wi-sleet.svg);
+  }
+  &[class*="custom-fog"] {
+    mask-image: url(../assets/svg/wi-fog.svg);
+  }
+  &[class*="custom-cloudy"] {
+    mask-image: url(../assets/svg/wi-cloudy.svg);
+  }
+
+}
+
+ion-icon{
+  &[class*="partly-cloudy-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 70px;
+    height: 70px;
+    }
+  &[class*="partly-cloudy-day"] {
+    mask-image: url(../assets/svg/wi-day-cloudy.svg);
+    }
+  &[class*="partly-cloudy-night"] {
+    mask-image: url(../assets/svg/wi-night-partly-cloudy.svg);
+  }
+}
+
+ion-icon {
+  &[class*="clear-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 70px;
+    height: 70px;
+  }
+
+  &[class*="clear-day"] {
+    mask-image: url(../assets/svg/wi-sunny.svg);
+  }
+  &[class*="clear-night"] {
+    mask-image: url(../assets/svg/wi-night-clear.svg);
+  }
+}

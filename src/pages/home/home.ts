@@ -14,28 +14,33 @@ export class HomePage {
 
   
   temperature: Observable<Temperature>;
+  
+  //declare today as interface
   today:dayforecast = new dayforecast();
-  private currentTemp: string;
-  private currentSum: string;
+
+  //date variable
+  dateVariable: string;
 
   constructor(public navCtrl: NavController, public weather: WeatherService) {
 
     //written by Max
     //this is using the day forecast interface
     this.today.setWeekday(this.weather.divideDay(new Date().getDay()));
-
-
     this.getTemperature();
+
+    this.dateVariable = new Date().toISOString();
   }
 
+  
   getTemperature() {
     this.temperature = this.weather.getDefaultTemperature();
     this.temperature.subscribe( (data: any) => { 
+      //if statement is Max's idea
       if (data.currently != undefined )
       {
         this.today.setSummary(data.currently.summary);
-        this.today.setTempHigh(+data.currently.temperature);
-        this.today.setHumidity( (data.currently.humidity * 100) );
+        this.today.setTempHigh( Math.round(data.currently.temperature) );
+        this.today.setHumidity( Math.round((data.currently.humidity * 100)) );
         this.today.setWindSpeed(data.currently.windSpeed);
         this.today.setIcon(data.currently.icon);
         this.weather.changeIconName([this.today]);

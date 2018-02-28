@@ -11,12 +11,19 @@
       <ion-col col-12>
         <div class = "location">Wenham</div>
       </ion-col>
+      
 
       <ion-col col-12>
         <div>
           {{ this.today.getSummary() }}
         </div>
       </ion-col>
+
+      <ion-col col-12>
+          <div>
+              <ion-icon [name]="today.getIcon()"></ion-icon>
+          </div>
+        </ion-col>
 
       <ion-col col-12>
         <div class = "temperature">
@@ -26,16 +33,11 @@
 
       <ion-col col-12>
           <div>
-            Humidity: {{ this.today.getHumidity() }}%
+            <p>Windspeed: {{ this.today.getWindSpeed() }}</p>
+            <p>Humidity: {{ this.today.getHumidity() }}%</p>
             
           </div>
         </ion-col>
-
-        <ion-col col-12>
-            <div>
-              Windspeed: {{ this.today.getWindSpeed() }}
-            </div>
-          </ion-col>
 
     </ion-row>
 

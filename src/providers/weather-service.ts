@@ -22,10 +22,9 @@ export class WeatherService {
     private apiUrl : string = 'https://api.darksky.net/forecast/';
     private apiKey : string = 'c7a0bbc2b027787365af6e16179330a4'; //this should be private
     private wenhamLocation : string = '42.589611,-70.819806';
-    private realUrl : string;
 
     
-
+    //got this from Dr. Tuck's code
     private currentTemperatureSubject: Subject<any>;
     private currentTemperature: Observable<Temperature>;
 
@@ -33,18 +32,14 @@ export class WeatherService {
         
     }
 
-
-    //testing
-    randomFunction() {
-        console.log("I actually do something useful");
-    }
-
+    //move to function outside of constructor
     getDefaultTemperature() {
 
         this.currentTemperatureSubject = new BehaviorSubject("??");
         this.currentTemperature = this.currentTemperatureSubject.asObservable();
         let realUrl = this.apiUrl + this.apiKey + "/" + this.wenhamLocation;
-        this.http.jsonp(realUrl,'callback').subscribe( data => this.currentTemperatureSubject.next(data));
+        this.http.jsonp(realUrl,'callback').subscribe( data => 
+                this.currentTemperatureSubject.next(data));
         return this.currentTemperature;        
     }
 
@@ -70,7 +65,7 @@ export class WeatherService {
         week.forEach(day => {
             if(day.icon == "rain"|| "wind" ||"snow" ||"sleet" ||"fog" || "cloudy")
             {
-              day.icon = "weather-" + day.icon;   
+              day.icon = "custom-" + day.icon;   
             }
            });
     }
