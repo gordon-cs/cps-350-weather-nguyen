@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>cps350-2018-example</application>
+  <version>0.0.1</version>
+  <runtime>java8</runtime>
+  <threadsafe>true</threadsafe>
+  <!-- Use com.google.appengine.api.urlfetch, even though it's
+       non-standard and less preferred than
+       java.net/HttpURLConnection, because it does not require billing
+       to be enabled in App Engine.
+  -->
+  <url-stream-handler>urlfetch</url-stream-handler>
+  <static-files>
+    <include path="**.html" >
+    </include>
+  </static-files>
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+  </system-properties>
+</appengine-web-app>
