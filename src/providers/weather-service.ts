@@ -19,7 +19,7 @@ import { Temperature } from '../models/temperature.model';
 @Injectable()
 export class WeatherService {
 
-    private apiUrl : string = 'https://api.darksky.net/forecast/';
+    private apiUrl : string = 'https://cps-350-weather-nguyen/forecast/';
     private apiKey : string = 'c7a0bbc2b027787365af6e16179330a4'; //this should be private
     private wenhamLocation : string = '42.589611,-70.819806';
 
@@ -38,7 +38,7 @@ export class WeatherService {
         this.currentTemperatureSubject = new BehaviorSubject("??");
         this.currentTemperature = this.currentTemperatureSubject.asObservable();
         let realUrl = this.apiUrl + this.apiKey + "/" + this.wenhamLocation;
-        this.http.jsonp(realUrl,'callback').subscribe( data => 
+        this.http.get(realUrl,'callback').subscribe( data => 
                 this.currentTemperatureSubject.next(data));
         return this.currentTemperature;        
     }
